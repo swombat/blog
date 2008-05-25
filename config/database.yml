@@ -1,0 +1,27 @@
+development:
+  database: inter_dev
+  adapter: mysql
+  host: localhost
+  username: root
+  password: 
+
+test:
+  database: inter_tests
+  adapter: mysql
+  host: localhost
+  username: root
+  password: 
+
+production:
+  database: inter
+  adapter: mysql
+  host: localhost
+  username: root
+  password: 
+
+wp25:
+  database: intersections_wp
+  adapter: mysql
+  host: localhost
+  username: root
+  password: 
