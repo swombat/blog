@@ -8,9 +8,7 @@
 
 <body>
 <div id="container">
-  <div id="header">
-    <!-- <h1><span><%= link_to this_blog.blog_name, this_blog.base_url %></span></h1>
-    <h2><%= this_blog.blog_subtitle %></h2> -->
+  <div id="header" onclick="document.location='/'">
   </div>
 
   <div id="page">
@@ -20,11 +18,11 @@
     </div>
 
     <div id="sidebar">
-      <!-- search -->
-      <%= render :partial => 'shared/search' %>
-
       <!-- sidebar components -->
       <%= render_sidebars %>
+
+      <!-- search -->
+      <%= render :partial => 'shared/search' %>
     </div>
     <br style="clear:both;" />
   </div>

@@ -1,4 +1,5 @@
 <div id="search" class="search">
+	<p>Search:</p>
     <% form_tag({ :controller => 'articles', :action => 'search' },
                 { :method => 'get', :id => 'sform' }) do -%>
       <p><input type="text" id="q" name="q" value="" /></p>
