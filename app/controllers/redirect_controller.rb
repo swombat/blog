@@ -2,13 +2,8 @@ class RedirectController < ContentController
   session :off
 
   def redirect
-    
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    
     # Ugly way to manage redirects, anything better ?
     if (request.request_uri =~ /^\/articles/)
-      
-      puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
       
       redirect_to request.request_uri.gsub('/articles', ''), :status => 301
       return
@@ -24,5 +19,9 @@ class RedirectController < ContentController
     else
       render :text => "Page not found", :status => 404
     end
+  end
+  
+  def feedburner
+    redirect_to :url => "http://feeds.feedburner.com/Inter-sections"
   end
 end
