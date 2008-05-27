@@ -4,6 +4,17 @@
   <title><%=h page_title %></title>
   <%= page_header %>
   <%= stylesheet_link_tag '/stylesheets/theme/application.css', :media => 'all' %>
+
+	<!-- Google Analytics -->
+	<%= javascript_include_tag "http://www.google-analytics.com/urchin.js" %>
+	<%= javascript_include_tag "gstats/custom_se" %>
+	<%= javascript_include_tag "gstats/track-imagesearch-and-yahoo" %>
+	<% javascript_tag do -%>
+		_uacct = "UA-2855233-1";
+		urchinTracker();	
+	<% end -%>
+	<!-- End of Google Analytics code -->
+
 </head>
 
 <body>

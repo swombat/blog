@@ -21,7 +21,7 @@ set :runner, "dtenner"
 set :spinner_user, "dtenner"
 
 set :deploy_to, "/var/www/#{application}"
-set :mongrel_conf, "#{current_path}/config/mongrel_cluster_production.yml"
+set :mongrel_conf, "/etc/mongrel_cluster/mongrel_cluster_intersections.yml"
 
 desc "Link in the production database.yml"
 task :after_update_code do
