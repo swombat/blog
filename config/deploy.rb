@@ -27,9 +27,5 @@ desc "Link in the production database.yml"
 task :after_update_code do
   run "rm -rf #{release_path}/config/database.yml"
   run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
-end
-
-desc "Create the cache directory"
-task :after_update_code do
   run "mkdir -p #{release_path}/tmp/cache"
 end
