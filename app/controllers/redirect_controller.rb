@@ -20,8 +20,4 @@ class RedirectController < ContentController
       render :text => "Page not found", :status => 404
     end
   end
-  
-  def feedburner
-    redirect_to :url => "http://feeds.feedburner.com/Inter-sections"
-  end
 end

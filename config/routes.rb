@@ -40,7 +40,7 @@ end
 
 ActionController::Routing::Routes.draw do |map|
 
-  map.connect 'feed', :controller => 'redirect', :action => 'feedburner'
+  map.connect 'feed', :controller => 'xml', :action => 'feedburner'
   
   # default
   map.index '', :controller  => 'articles', :action => 'index'

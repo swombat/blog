@@ -73,6 +73,10 @@ class XmlController < ApplicationController
 
   end
 
+  def feedburner
+    redirect_to "http://feeds.feedburner.com/Inter-sections"
+  end
+
   protected
 
   def adjust_format
@@ -134,4 +138,5 @@ class XmlController < ApplicationController
     @items += Category.find_all_with_article_counters(1000)
     @items += Tag.find_all_with_article_counters(1000)
   end
+
 end
