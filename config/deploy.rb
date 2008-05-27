@@ -25,5 +25,6 @@ set :mongrel_conf, "#{current_path}/config/mongrel_cluster_production.yml"
 
 desc "Link in the production database.yml"
 task :after_update_code do
+  run "rm -rf #{release_path}/config/database.yml"
   run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
 end
