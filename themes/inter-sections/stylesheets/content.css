@@ -398,3 +398,11 @@
 	display: inline; 
 }
 
+
+#socialBox { 
+	font-size: 10px;
+	background: #fafafa;
+	margin: 0; padding: 5px;
+	border: 2px solid #ddd;
+	list-style-type: none;
+}
