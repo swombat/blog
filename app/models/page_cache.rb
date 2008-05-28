@@ -15,7 +15,7 @@ class PageCache
     logger.debug "PageCache - sweep_all called by #{caller[1].inspect}"
     unless Blog.default && Blog.default.cache_option == "caches_action_with_params"
       logger.info "Sweeping cache"
-      [*2005..2015].each do |year|
+      [*1990..2015].each do |year|
         FileUtils.rm_rf(public_path + "/#{year}")
       end
       self.zap_pages(%w{index.* articles.* articles pages
