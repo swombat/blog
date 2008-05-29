@@ -29,13 +29,13 @@
 			<td valign="top">
 				<script type="text/javascript">
 				//digg_url = '<%= @article.permalink_url %>';
-				digg_url = 'http://www.inter-sections.net/2008/05/28/awful-marketing-campaign';
+				digg_url = '<%= @article.permalink_url %>';
 				</script>
 				<%= javascript_include_tag "social/digg" %>
 			</td>
 			<td valign="top">
-				<script>reddit_url='http://www.inter-sections.net/2008/05/28/awful-marketing-campaign'</script>
-				<script>reddit_title='Blah'</script>
+				<script>reddit_url='<%= @article.permalink_url %>'</script>
+				<script>reddit_title='<%= @article.title %>'</script>
 				<%= javascript_include_tag "social/reddit" %>
 			</td>
 			<td valign="top">
