@@ -5,8 +5,16 @@
   <%= page_header %>
   <%= stylesheet_link_tag '/stylesheets/theme/application.css', :media => 'all' %>
 
+	<script src="/javascripts/jquery.js" type="text/javascript"></script>
+	<script src="/javascripts/jquery-ui.js" type="text/javascript"></script>
+	<script src="/javascripts/jquery-fx.js" type="text/javascript"></script>
+
+	<%= javascript_include_tag "jquery" %>
+	<%= javascript_include_tag "jquery-ui" %>
+	<%= javascript_include_tag "jquery-fx" %>
+
 	<!-- Google Analytics -->
-	<%= javascript_include_tag "http://www.google-analytics.com/urchin.js" %>
+	<%= javascript_include_tag "gstats/urchin" %>
 	<%= javascript_include_tag "gstats/custom_se" %>
 	<%= javascript_include_tag "gstats/track-imagesearch-and-yahoo" %>
 	<% javascript_tag do -%>
@@ -15,7 +23,7 @@
 	<% end -%>
 	<!-- End of Google Analytics code -->
 
-	<%= javascript_include_tag "social/SocialHistory" %>
+	<%#= javascript_include_tag "social/SocialHistory" %>
 
 </head>
 
