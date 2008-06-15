@@ -1,11 +1,11 @@
 class Admin::UsersController < Admin::BaseController
 
-  def index
-    list
-    render :action => 'list'
+  def list
+    index
+    render :action => 'index'
   end
 
-  def list
+  def index
     @users = User.find :all
   end
 
@@ -13,7 +13,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(params[:user])
     setup_profiles
     if request.post? and @user.save
-      flash[:notice] = 'User was successfully created.'
+      flash[:notice] = _('User was successfully created.')
       redirect_to :action => 'list'
     end
   end
@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::BaseController
     setup_profiles
     @user.attributes = params[:user]
     if request.post? and @user.save
-      flash[:notice] = 'User was successfully updated.'
+      flash[:notice] = _('User was successfully updated.')
       redirect_to :action => 'list'
     end
   end
