@@ -19,6 +19,7 @@ production:
   username: root
   password: 
 
+
 wp25:
   database: intersections_wp
   adapter: mysql
