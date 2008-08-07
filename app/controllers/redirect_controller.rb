@@ -4,7 +4,6 @@ class RedirectController < ContentController
   def redirect
     # Ugly way to manage redirects, anything better ?
     if (request.request_uri =~ /^\/articles/)
-      
       redirect_to request.request_uri.gsub('/articles', ''), :status => 301
       return
     end

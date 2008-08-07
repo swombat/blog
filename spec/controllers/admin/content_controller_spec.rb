@@ -14,17 +14,17 @@ describe Admin::ContentController do
   integrate_views
 
   before do
-    request.session = { :user_id => users(:tobi).id }
+    request.session = { :user => users(:tobi).id }
   end
 
   def test_index
     get :index
-    assert_template 'list'
+    assert_template 'index'
   end
 
   def test_list
     get :list
-    assert_template 'list'
+    assert_template 'index'
     assert_template_has 'articles'
   end
 
@@ -158,7 +158,7 @@ describe Admin::ContentController do
     assert_response :success
 
     post :destroy, 'id' => art_id
-    assert_response :redirect, :action => 'list'
+    assert_response :redirect, :action => 'index'
 
     assert_raise(ActiveRecord::RecordNotFound) {
       article = Article.find(art_id)

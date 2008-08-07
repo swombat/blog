@@ -284,8 +284,6 @@ Localization.define('fr_FR') do |l|
   l.store "Source Email", "Adresse courriel source"
   l.store "Email address used by Typo to send notifications", "Adresse courriel utilisée par Typo pour l'envoi d'alertes"
   l.store "Jabber account", "Compte Jabber"
-  l.store "Jabber account to use when sending Jabber notifications", "Compte jabber à utiliser pour l'envoi d'alertes"
-  l.store "Jabber password", "Mot de passe Jabber"
   l.store "Spam protection", "Protection contre le spam"
   l.store "Enabling spam protection will make typo compare the IP address of posters as well as the contents of their posts against local and remote blacklists. Good defense against spam bots", "La protection contre le spam permettra à typo de comparer l'adresse IP des commentateurs ainsi que le contenu de leurs commentaires avec une liste noire distante"
   l.store "Enable spam protection", "Activer la protection contre le spam"
@@ -449,9 +447,21 @@ Localization.define('fr_FR') do |l|
   l.store "Jabber", "Jabber"
   l.store "Password Confirmation", "Confirmer le mot de passe"
   l.store "Send notification messages via email", "Envoyer des alertes par courriel"
-  l.store "Send notification messages via jabber", "Envoyer des alertes par Jabber"
   l.store "Send notification messages when new articles are posted", "Envoyer des alertes à la publication de nouveaux billets"
   l.store "Send notification messages when comments are posted", "Envoyer des alertes à la publication de nouveaux commentaires"
+  l.store "Login", "Login"
+  l.store "Profile", "Profil"
+  l.store "Display Name", "Nom affiché"
+  l.store "Email", "Email"
+  l.store "Password", "Mot de passe"
+  l.store "Password confirmation", "Confirmation du mot de passe"
+  l.store "Send notification messages via email", "Envoi de notification des messages par email"
+  l.store "Send notification messages when new articles are posted", "Envoi de notification de messages quand de nouveaux articles sont postés" 
+  l.store "Send notification messages when comments are posted", "Envoi de notification de messages quand des commentaires sont postés"
+
+  #admin/user/new.html.erb
+  l.store "Add User", "Ajout d'utilisateur"
+  l.store "Users", "Utilisateurs"
   
   #admin/user/_user.rhtml
   l.store "Number of Articles", "Nombre de billets"
@@ -475,7 +485,6 @@ Localization.define('fr_FR') do |l|
   #admin/user/show.rhtml
   l.store "User's articles", "Articles publiés par cet utilisateur"
   l.store "Notify via email", "Cet utilisateur reçoit des alertes par courriel"
-  l.store "Notify via jabber", "Cet utilisateur reçoit des alertes par Jabber"
   l.store "Notify on new articles", "Cet utilisateur est alerté à la publication d'un nouveau billet"
   l.store "Notify on new comments", "Cet utilisateur est alerté à la publication d'un nouveau commentaire"
   
@@ -560,6 +569,12 @@ Localization.define('fr_FR') do |l|
   l.store "Content Type was successfully updated.", "Le type du contenu a été mis à jour avec succès."
   l.store "Error occurred while updating Content Type.", "Une erreur est survenue lors de la mise à jour du type du contenu."
   l.store "complete", "complet"
+
+  #app/controller/admin/user_controller.rb
+  l.store "User was successfully updated.", "L'utilisateur a été mis à jour avec succès."
+  l.store "User was successfully created.", "L'utilisateur a été créé avec succès."
+
+
   
   # Themes
   l.store "Home", "Accueil"

@@ -7,13 +7,13 @@ class Admin::ResourcesController; def rescue_action(e) raise e end; end
 
 describe Admin::ResourcesController do
   before do
-    @request.session = { :user_id => users(:tobi).id }
+    @request.session = { :user => users(:tobi).id }
   end
 
   def test_list
     get :list
     assert_response :success
-    assert_template 'list'
+    assert_template 'index'
     assert_template_has 'resources'
     assert_not_nil assigns(:resources)
     assert_not_nil assigns(:resources_pages)
@@ -31,7 +31,7 @@ describe Admin::ResourcesController do
     post :destroy, :id => res_id
     assert_response 302
     follow_redirect
-    assert_template 'list'
+    assert_template 'index'
   end
 
   def test_new

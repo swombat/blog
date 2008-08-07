@@ -87,7 +87,7 @@ describe 'Given a new blog' do
   end
 
   it 'should ping technorati, blog.gs and weblogs.com' do
-    @blog.ping_urls.should == "http://rpc.technorati.com/rpc/ping\nhttp://ping.blo.gs/\nhttp://rpc.weblogs.com/RPC2"
+    @blog.ping_urls.should == "http://blogsearch.google.com/ping/RPC2\nhttp://rpc.technorati.com/rpc/ping\nhttp://ping.blo.gs/\nhttp://rpc.weblogs.com/RPC2"
   end
 
   it 'should send outbound pings' do
@@ -96,11 +96,6 @@ describe 'Given a new blog' do
 
   it '#email_from should be typo@example.com' do
     @blog.email_from.should == 'typo@example.com'
-  end
-
-  it 'Jabber address and password should be blank' do
-    @blog.jabber_address.should be_blank
-    @blog.jabber_password.should be_blank
   end
 
   it '#is_okay should be false until #blog_name is explicitly set' do

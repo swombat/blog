@@ -7,17 +7,17 @@ class Admin::BlacklistController; def rescue_action(e) raise e end; end
 
 describe Admin::BlacklistController do
   before do
-    request.session = { :user_id => users(:tobi).id }
+    request.session = { :user => users(:tobi).id }
   end
 
   def test_index
     get :index
-    assert_template 'list'
+    assert_template 'index'
   end
 
   def test_list
     get :list
-    assert_template 'list'
+    assert_template 'index'
     assert_template_has 'blacklist_patterns'
   end
 

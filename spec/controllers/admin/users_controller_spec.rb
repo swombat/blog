@@ -8,19 +8,19 @@ class Admin::UsersController; def rescue_action(e) raise e end; end
 describe Admin::UsersController, "rough port of the old functional test" do
   integrate_views
 
-  before do
-    request.session = { :user_id => users(:tobi).id }
+  before(:each) do
+    request.session = { :user => users(:tobi).id }
   end
 
   def test_index
     get :index
-    assert_template 'list'
+    assert_template 'index'
     assert_template_has 'users'
   end
 
   def test_list
     get :list
-    assert_template 'list'
+    assert_template 'index'
     assert_template_has 'users'
   end
 
@@ -29,10 +29,10 @@ describe Admin::UsersController, "rough port of the old functional test" do
     assert_template 'new'
 
     post :new, :user => { :login => 'errand', :email => 'corey@test.com',
-      :password => 'testpass', :password_confirmation => 'testpass' }
-    assert_response :redirect, :action => 'list'
+      :password => 'testpass', :password_confirmation => 'testpass', :profile_id => 1 }
+    assert_response :redirect, :action => 'index'
     follow_redirect
-    assert_template 'list'
+    assert_template 'index'
   end
 
   def test_edit
@@ -44,10 +44,9 @@ describe Admin::UsersController, "rough port of the old functional test" do
     post :edit, :id => user_id, :user => { :login => 'errand',
       :email => 'corey@test.com', :password => 'testpass',
       :password_confirmation => 'testpass' }
-    assert_response :redirect, :action => 'list'
+    assert_response :redirect, :action => 'index'
     follow_redirect
-    assert_template 'list'
-#    assert_valid assigns(:user)
+    assert_template 'index'
   end
 
   def test_destroy
@@ -60,7 +59,7 @@ describe Admin::UsersController, "rough port of the old functional test" do
     post :destroy, :id => users(:bob).id
     assert_response :redirect, :action => 'list'
     follow_redirect
-    assert_template 'list'
+    assert_template 'index'
     assert_equal user_count - 1, User.count
   end
 end

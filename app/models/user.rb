@@ -46,6 +46,19 @@ class User < CachedModel
     end
   end
 
+  # The current project_modules
+  def project_modules
+    profile.modules.collect { |m| AccessControl.project_module(profile.label, m) }.uniq.compact rescue []
+  end
+  
+  # Generate Methods takes from AccessControl rules
+  # Example:
+  #
+  #   def publisher?
+  #     profile.label == :publisher
+  #   end
+  AccessControl.roles.each { |r| define_method("#{r.to_s.downcase.to_sym}?") { profile.label.to_s.downcase.to_sym == r.to_s.downcase.to_sym } }
+
   # Let's be lazy, no need to fetch the counters, rails will handle it.
   def self.find_all_with_article_counters(ignored_arg)
     find(:all)
@@ -97,7 +110,10 @@ class User < CachedModel
   # Before saving the record to database we will crypt the password
   # using SHA1.
   # We never store the actual password in the DB.
+  # But before the encryption, we send an email to user for he can remind his
+  # password
   def crypt_password
+    send_create_notification
     write_attribute "password", self.class.sha1(password(true))
     @password = nil
   end
@@ -126,7 +142,21 @@ class User < CachedModel
   validates_uniqueness_of :login, :on => :create
   validates_length_of :password, :within => 5..40, :on => :create
   validates_presence_of :login
+  validates_presence_of :email
 
   validates_confirmation_of :password, :if=> Proc.new { |u| u.password.size > 0}
   validates_length_of :login, :within => 3..40
+
+
+  private
+
+  # Send a mail of creation user to the user create
+  def send_create_notification
+    begin
+      email_notification = NotificationMailer.create_notif_user(self)
+      EmailNotify.send_message(self,email_notification)
+    rescue => err
+      logger.error "Unable to send notification of create user email: #{err.inspect}"
+    end
+  end
 end

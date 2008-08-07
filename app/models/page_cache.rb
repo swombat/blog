@@ -14,15 +14,14 @@ class PageCache
   def self.sweep_all
     logger.debug "PageCache - sweep_all called by #{caller[1].inspect}"
     unless Blog.default && Blog.default.cache_option == "caches_action_with_params"
-      logger.info "Sweeping cache"
-      [*1990..2015].each do |year|
-        FileUtils.rm_rf(public_path + "/#{year}")
-      end
-      self.zap_pages(%w{index.* articles.* articles pages
+      self.zap_pages(%w{index.* articles.* pages page
                      pages.* feedback feedback.*
                      comments comments.*
-                     categories categories.*
-                     tags, tags.*})
+                     category categories.* xml
+                     tag tags.* category archive.*})
+
+      self.zap_pages((1990..2020))
+      self.zap_pages([*1990..2020].collect { |y| "#{y}.*" })
     end
   end
 
