@@ -12,7 +12,7 @@ role :app, "swombat.sleektech.nl"
 role :web, "swombat.sleektech.nl"
 role :db,  "swombat.sleektech.nl", :primary => true
 
-set :branch, "origin/master"
+set :branch, "master"
 
 set :user, "daniel"
 set :runner, "daniel"
