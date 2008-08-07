@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/typo_converteur"]
 	path = vendor/plugins/typo_converteur
 	url = git://github.com/shingara/typo_converteur.git
+[submodule "vendor/rails"]
+	path = vendor/rails
+	url = git://github.com/rails/rails.git
