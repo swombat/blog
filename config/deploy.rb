@@ -44,3 +44,5 @@ namespace :thin do
     end
   end
 end
+
+after "deploy", "deploy:cleanup"
