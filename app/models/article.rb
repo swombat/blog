@@ -233,7 +233,7 @@ class Article < Content
                                     :published_at => date_range }) \
       or raise ActiveRecord::RecordNotFound
   end
-
+  
   def self.find_by_params_hash(params = {})
     params[:id] ||= params[:article_id]
     if params[:id]
