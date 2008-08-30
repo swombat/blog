@@ -46,7 +46,10 @@ class ArticlesController < ContentController
       format.xml  { redirect_to :format => 'atom' }
     end
     rescue ActiveRecord::RecordNotFound
-      redirect_to "http://www.inter-sections.net/2008/08/30/how-not-to-write-a-job-advert" if params[:id] == "how-not-to-write-a-job-advert"
+      if params[:id] == "how-not-to-write-a-job-advert"
+        redirect_to "http://www.inter-sections.net/2008/08/30/how-not-to-write-a-job-advert"
+        return
+      end
       error("Post not found...")
   end
 
