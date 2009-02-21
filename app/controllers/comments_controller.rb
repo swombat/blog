@@ -2,6 +2,8 @@ class CommentsController < FeedbackController
   before_filter :check_request_type, :only => [:create]
 
   def create
+    raise "Spam" unless params[:anti_spam] == "orange"
+    
     @comment = @article.with_options(new_comment_defaults) do |art|
       art.add_comment(params[:comment].symbolize_keys)
     end

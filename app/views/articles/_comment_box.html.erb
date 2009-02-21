@@ -7,7 +7,6 @@
                     :html => {:id=>"commentform",:class=>"commentform"} \
    do %>
 
-
 <div class="comment-box">
   <div id="errors"></div>
   <div id="preview" style="display: none"></div>
@@ -17,6 +16,10 @@
     <tr>
       <td><p><label for="comment_author"><%= _("Your name")%></label></p></td>
       <td> <%= text_field "comment", "author", :size => 20 %> <small><%= link_to_function("(leave url/email &#187;)", "Element.toggle('guest_url'); Element.toggle('guest_email')") %></small></td>
+    </tr>
+    <tr id="anti_spam">
+      <td><p><label for="anti_spam"><%= _("Anti-spam: Type the word 'orange'")%></label></p></td>
+      <td> <%= text_field "anti_spam" %></td>
     </tr>
     <tr id="guest_url" style="display:none;">
       <td><p><label for="comment_url"><%= _("Your blog")%></label></p></td>

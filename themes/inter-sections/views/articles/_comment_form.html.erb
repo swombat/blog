@@ -18,6 +18,12 @@
     </label>
   </p>
 
+  <p>
+    <label><%= _("Anti-spam: Please type the word 'orange' for your comment to be recognised")%>:<br />
+      <%= text_field_tag "anti_spam" %>
+    </label>
+  </p>
+
   <div id="extra_fields" style="display:none;">
       <p>
         <label><%= _("Email") %>: <%= content_tag('small', "(#{link_to('gravatar', 'http://gravatar.com')} "+ _("enabled") + ")") if this_blog.use_gravatar %><br />
