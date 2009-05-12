@@ -1,5 +1,5 @@
-ssh_options[:username] = "dtenner"
-ssh_options[:port] = 22
+ssh_options[:username] = "daniel"
+ssh_options[:port] = 12222
 
 set :application, "inter-sections"
 set :repository,  "git://github.com/swombat/blog.git"
@@ -8,9 +8,9 @@ set :scm, "git"
 set :deploy_via, :remote_cache
 set :git_enable_submodules, 1
 
-role :app, "swombat.sleektech.nl"
-role :web, "swombat.sleektech.nl"
-role :db,  "swombat.sleektech.nl", :primary => true
+role :app, "linode.swombat.com"
+role :web, "linode.swombat.com"
+role :db,  "linode.swombat.com", :primary => true
 
 set :branch, "master"
 
@@ -27,22 +27,19 @@ task :after_update_code do
   run "mkdir -p #{release_path}/tmp/cache"
 end
 
+set :keep_releases,     5
+ 
 namespace :deploy do
-  %w(start stop restart).each do |action| 
-     desc "#{action} the Thin processes"  
-     task action.to_sym do
-       find_and_execute_task("thin:#{action}")
-    end
-  end 
-end
-
-namespace :thin do  
-  %w(start stop restart).each do |action| 
-  desc "#{action} the app's Thin Cluster"  
-    task action.to_sym, :roles => :app do  
-      run "thin #{action} -c #{deploy_to}/current -C #{deploy_to}/current/config/thin.yml" 
-    end
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+ 
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
   end
 end
 
 after "deploy", "deploy:cleanup"
+after "deploy:migrations", "deploy:cleanup"
